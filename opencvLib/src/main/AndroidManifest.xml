@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.richie.opencvLib">
+
+    <uses-feature
+            android:name="android.hardware.camera"
+            android:required="true" />
+    <uses-feature
+            android:name="android.hardware.camera.level.full"
+            android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
+
+</manifest>

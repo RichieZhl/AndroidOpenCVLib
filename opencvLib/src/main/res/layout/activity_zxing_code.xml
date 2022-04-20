@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".CodeActivity">
+
+    <org.opencv.android.JavaCamera2View
+            android:id="@+id/camera_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:camera_id="back"
+    />
+
+    <ImageView
+            android:id="@+id/scan_horizontal_line_view"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="36dp"
+            android:src="@drawable/scan_line"
+    />
+
+    <ImageButton
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="15dp"
+            app:backgroundTint="@null"
+            android:stateListAnimator="@null"
+            android:background="@android:color/transparent"
+            android:src="@mipmap/back"/>
+
+    <ImageButton
+            android:id="@+id/photo_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/scan_horizontal_line_view"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="10dp"
+            app:backgroundTint="@null"
+            android:stateListAnimator="@null"
+            android:background="@android:color/transparent"
+            android:src="@mipmap/photo_select"/>
+
+    <ImageButton
+            android:id="@+id/torch_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/scan_horizontal_line_view"
+            app:backgroundTint="@null"
+            android:stateListAnimator="@null"
+            android:background="@android:color/transparent"
+            android:src="@mipmap/torch_off"/>
+</RelativeLayout>
