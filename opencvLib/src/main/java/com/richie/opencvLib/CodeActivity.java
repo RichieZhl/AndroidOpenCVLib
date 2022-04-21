@@ -106,16 +106,11 @@ public class CodeActivity extends AppCompatActivity {
             return;
         }
 
-        List<Mat> matList = new ArrayList<>();
-        List<String> strings = OpenCVUtils.getWeChatQRCode().detectAndDecode(mGray, matList);
+        List<String> strings = OpenCVUtils.getWeChatQRCode().detectAndDecode(mGray);
         if (strings != null && strings.size() > 0) {
             if (fromPhoto || ++qrCodeScanCount > 5) {
                 qrCodeScanCount = 0;
 
-                for (Mat mat : matList) {
-                    MatOfPoint pt = new MatOfPoint(mat);
-                    System.out.println("size: " + pt.toList());
-                }
                 runOnUiThread(() -> {
                     binding.cameraView.stop();
                     playComplete();
@@ -124,9 +119,6 @@ public class CodeActivity extends AppCompatActivity {
                 if (CodeActivity.mResultListener != null) {
                     CodeActivity.mResultListener.callback(strings, null);
                 }
-            }
-            for (Mat mat : matList) {
-                mat.release();
             }
         }
     }
