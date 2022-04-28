@@ -35,6 +35,7 @@ public abstract class CameraBridgeViewBase extends SurfaceView implements Surfac
 
     private int mState = STOPPED;
     private Bitmap mCacheBitmap;
+    protected Bitmap mFitBitmap;
     private CvCameraViewListener2 mListener;
     private boolean mSurfaceExist;
     private final Object mSyncObject = new Object();
@@ -396,6 +397,14 @@ public abstract class CameraBridgeViewBase extends SurfaceView implements Surfac
         }
     }
 
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (mFitBitmap != null) {
+            mFitBitmap.recycle();
+        }
+    }
+
     /**
      * This method shall be called by the subclasses when they have valid
      * object and want it to be delivered to external client (via callback) and
@@ -444,7 +453,7 @@ public abstract class CameraBridgeViewBase extends SurfaceView implements Surfac
                          (tCanvas.getHeight() - mCacheBitmap.getHeight()) / 2 + mCacheBitmap.getHeight()), null);
                 }
 
-                holderCanvas.drawBitmap(mCacheBitmap, new Rect(0,0,tBmp.getWidth(), tBmp.getHeight()), new Rect(0,0,tBmp.getWidth(), tBmp.getHeight()), null);
+                holderCanvas.drawBitmap(tBmp, new Rect(0,0,tBmp.getWidth(), tBmp.getHeight()), new Rect(0,0,tBmp.getWidth(), tBmp.getHeight()), null);
 
                 if (mFpsMeter != null) {
                     mFpsMeter.measure();
@@ -455,6 +464,10 @@ public abstract class CameraBridgeViewBase extends SurfaceView implements Surfac
                 try {
                     Mat bitmapMat = new Mat();
                     Utils.bitmapToMat(tBmp, bitmapMat);
+                    if (mFitBitmap != null) {
+                        mFitBitmap.recycle();
+                    }
+                    mFitBitmap = tBmp;
                     frame.setBitmapMat(bitmapMat);
                 } catch (Exception e) {
                     //

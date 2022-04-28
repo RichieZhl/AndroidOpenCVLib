@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.ImageFormat;
 import android.hardware.camera2.*;
 import android.hardware.camera2.params.StreamConfigurationMap;
@@ -69,6 +70,10 @@ public class JavaCamera2View extends CameraBridgeViewBase {
 
     public void setListener(JavaCamera2ViewListener listener) {
         this.mListener = listener;
+    }
+
+    public Bitmap getFitBitmap() {
+        return mFitBitmap;
     }
 
     private void startBackgroundThread() {

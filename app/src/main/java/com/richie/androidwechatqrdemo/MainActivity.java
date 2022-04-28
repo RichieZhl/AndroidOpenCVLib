@@ -3,7 +3,6 @@ package com.richie.androidwechatqrdemo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.richie.androidwechatqrdemo.databinding.ActivityMainBinding;
 import com.richie.opencvLib.CodeActivity;
@@ -22,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
         CodeActivity.setResultListener(new CodeActivity.CodeActivityResultListener() {
             @Override
-            public void callback(List<String> results, String message) {
+            public void callback(String result, String message) {
                 if (message == null) {
-                    System.out.println("results:" + results);
+                    System.out.println("result:" + result);
                 } else {
                     System.out.println("cancel");
                 }

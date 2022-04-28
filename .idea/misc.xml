@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.2625" />
+        <entry key="opencvLib/src/main/res/drawable/button_bg.xml" value="0.12708333333333333" />
+        <entry key="opencvLib/src/main/res/layout/activity_zxing_code.xml" value="0.1109375" />
+      </map>
+    </option>
+  </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>

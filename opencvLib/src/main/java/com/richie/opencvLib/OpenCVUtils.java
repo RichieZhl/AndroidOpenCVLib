@@ -2,6 +2,8 @@ package com.richie.opencvLib;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import org.opencv.android.InstallCallbackInterface;
 import org.opencv.android.LoaderCallbackInterface;
@@ -9,10 +11,7 @@ import org.opencv.android.OpenCVLoader;
 import org.opencv.barcode.BarcodeDetector;
 import org.opencv.wechat_qrcode.WeChatQRCode;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 /**
  * Created by lylaut on 2022/04/18
@@ -110,5 +109,23 @@ public class OpenCVUtils {
             }
         }
         return path;
+    }
+
+    public static Bitmap saveAndGetBitmap(Context context, Bitmap bitmap) {
+        String filePath = context.getApplicationContext().getFilesDir().getAbsolutePath() + File.separator + "opencv_capture_view.jpg";
+        try {
+            File file = new File(filePath);
+            FileOutputStream fos = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.flush();
+            fos.close();
+
+            FileInputStream fis = new FileInputStream(filePath);
+            Bitmap resBitmap  = BitmapFactory.decodeStream(fis);
+            fis.close();
+            return resBitmap;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
